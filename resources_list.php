@@ -35,7 +35,7 @@ return true;
 </script>
 </head>
 <body>
-	<?php include('includes/header.php');?>
+	<?php include('includes/manager_header.php');?>
 	<div class="ts-main-content">
 		<?php include('includes/manager_sidebar.php');?>
 		<div class="content-wrapper">
