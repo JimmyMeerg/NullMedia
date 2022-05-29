@@ -1,9 +1,53 @@
 
+	<?php include('includes/manager_header.php');?>
+	<div class="ts-main-content">
+		<?php include('includes/manager_sidebar.php');?>
+        
+        
+ <!DOCTYPE html>
+<html lang="en">
 
-<!doctype html>
-<html lang="en" class="no-js">
 <head>
-	<meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Hotel Booking</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    
+    
+    <style>
+          
+        .well {
+            background: rgba(0, 0, 0, 0.7);
+            border: none;
+            height: 200px;
+        }
+        
+        body {
+            background-image: url('images/home_bg.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        
+        h4 {
+            color: #ffbb2b;
+        }
+        h6
+        {
+            color: navajowhite;
+            font-family:  monospace;
+        }
+
+
+    </style>
+    
+
+    <meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 	<meta name="description" content="">
@@ -33,57 +77,72 @@ return false;
 return true;
 }
 </script>
+    
 </head>
+
+
+
 <body>
-	<?php include('includes/manager_header.php');?>
-	<div class="ts-main-content">
-		<?php include('includes/manager_sidebar.php');?>
-		<div class="content-wrapper">
-			<div class="container-fluid">
+   
+        
+        
+<?php
+$host="localhost";
+$dbuser="root";
+$dbpass="";
+$db="fkreserv";
+$mysqli =new mysqli($host,$dbuser, $dbpass, $db);
 
-				<div class="row">
-					<div class="col-md-12">
-					
-						<h2 class="page-title">User Login </h2>
 
-						<div class="row">
-					<div class="col-md-6 col-md-offset-3">
-						<div class="well row pt-2x pb-3x bk-light">
-							<div class="col-md-8 col-md-offset-2">
-							
-								<form action="" class="mt" method="post">
-									<label for="" class="text-uppercase text-sm">Email</label>
-									<input type="text" placeholder="Email" name="email" class="form-control mb">
-									<label for="" class="text-uppercase text-sm">Password</label>
-									<input type="password" placeholder="Password" name="password" class="form-control mb">
-									
+// Create connection
+$conn = new mysqli($host,$dbuser, $dbpass, $db);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
 
-									<input type="submit" name="login" class="btn btn-primary btn-block" value="login" >
-								</form>
-							</div>
-						</div>
-						<div class="text-center text-light" style="color:black;">
-							<a href="forgot-password.php" style="color:black;">Forgot password?</a>
-						</div>
-					</div>
-				</div>
-						</div>
-							</div>
-						</div>
-					</div>
-				</div> 	
-			</div>
-		</div>
-	</div>
-	<script src="js/jquery.min.js"></script>
-	<script src="js/bootstrap-select.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.dataTables.min.js"></script>
-	<script src="js/dataTables.bootstrap.min.js"></script>
-	<script src="js/Chart.min.js"></script>
-	<script src="js/fileinput.js"></script>
-	<script src="js/chartData.js"></script>
-	<script src="js/main.js"></script>
+$sql = "SELECT * FROM room_category";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        echo  "
+        <div class='row'>
+        <div class='col-md-2'></div>
+        <div class='col-md-6 well'>
+            <h4>".$row['roomname']."</h4><hr>
+            <h6>Status: ".$row['status']."</h6>
+            <h6>Location: ".$row['location']."</h6>
+            <h6>Date: ".$row['date']."</h6>
+            <h6>Technician in Charger: ".$row['tic']."</h6>
+        </div>
+        &nbsp;&nbsp;
+        <a href='admin/edit_room_cat.php?roomname=".$row['roomname']."'><button class='btn btn-primary button'>Edit</button></a>
+        </div>
+        
+    
+
+     ";
+    }
+} else {
+    echo "0 results";
+}
+$conn->close();
+?>
+    
+    
+    
+    
+
+
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
 </body>
 
 </html>
