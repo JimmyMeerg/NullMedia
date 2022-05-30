@@ -1,10 +1,8 @@
 
 	<?php include('includes/manager_header.php');?>
 	<div class="ts-main-content">
-		<?php include('includes/manager_sidebar.php');?>
-     
-        
-        
+	<?php include('includes/manager_sidebar.php');?>
+      
         
  <!DOCTYPE html>
 <html lang="en">
