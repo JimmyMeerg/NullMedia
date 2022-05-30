@@ -101,7 +101,7 @@ if ($conn->connect_error) {
 $sql = "SELECT * FROM room_category";
 $result = $conn->query($sql);
 if(isset($_REQUEST[ 'submit'])) 
-{ 
+{ while($row = $result->fetch_assoc()){
     extract($_REQUEST); 
     $result=$user->edit_room_cat($roomname, $room_qnty, $no_bed, $bedtype,$facility,$price,$room_cat);
     if($result)
@@ -112,7 +112,7 @@ if(isset($_REQUEST[ 'submit']))
     }
 
    
-} 
+} }
 ?>
 
 
@@ -125,7 +125,7 @@ if(isset($_REQUEST[ 'submit']))
             <form action="" method="post" name="room_category">
                 <div class="form-group">
                     <label for="roomname">Room Type Name:</label>
-                    <input type="text" class="form-control" name="roomname" value="<?php echo $row['roomname'] ?>" required>
+                    <input type="text" class="form-control" name="roomname" value="<?php echo $row['rboomname'] ?>" required>
                 </div>
                  <div class="form-group">
                     <label for="qty">Status:</label>&nbsp;
