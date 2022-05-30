@@ -115,7 +115,7 @@ if ($result->num_rows > 0) {
             <h4>".$row['roomname']."</h4><hr>
             <h6>Status: ".$row['status']."</h6>
             <h6>Location: ".$row['location']."</h6>
-            <h6>Date: ".$row['date']."</h6>
+           
             <h6>Technician in Charger: ".$row['tic']."</h6>
         </div>
         &nbsp;&nbsp;

@@ -3,7 +3,7 @@
 	<div class="ts-main-content">
 		<?php include('includes/manager_sidebar.php');?>
         
-        <?php
+<?php
 session_start();
 ?>
 
@@ -75,7 +75,7 @@ session_start();
 </head>
 
 <?php
-session_start();
+
 $host="localhost";
 $dbuser="root";
 $dbpass="";
@@ -170,14 +170,14 @@ if(isset($_POST['update']))
                 <br>
                 <br>
                 <br>
-                <center> <button type="update" class="btn btn-lg btn-primary button" name="update">Update</button>
+                <center> <button type="status" class="btn btn-lg btn-primary button" name="status">Update</button>
 
                 <br>
                 
                 <br>
                 <br>
                 <div id="click_here">
-                    <a href="../admin.php">Back to Room Lists</a>
+                    <a href="resources_list.php">Back to Room Lists</a>
                 </div> </center>
 
 
