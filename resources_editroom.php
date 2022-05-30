@@ -2,6 +2,8 @@
 	<?php include('includes/manager_header.php');?>
 	<div class="ts-main-content">
 		<?php include('includes/manager_sidebar.php');?>
+     
+        
         
         
  <!DOCTYPE html>
@@ -81,11 +83,6 @@ return true;
 </head>
 
 
-
-<body>
-   
-        
-        
 <?php
 $host="localhost";
 $dbuser="root";
@@ -103,46 +100,65 @@ if ($conn->connect_error) {
 
 $sql = "SELECT * FROM room_category";
 $result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-        echo  "
-        <div class='row'>
-        <div class='col-md-2'></div>
-        <div class='col-md-6 well'>
-            <h4>".$row['roomname']."</h4><hr>
-            <h6>Status: ".$row['status']."</h6>
-            <h6>Location: ".$row['location']."</h6>
-            <h6>Date: ".$row['date']."</h6>
-            <h6>Technician in Charger: ".$row['tic']."</h6>
-        </div>
-        &nbsp;&nbsp;
-        <a href='resources_editroom.php?roomname=".$row['roomname']."'><button class='btn btn-primary button'>Edit</button></a>
-        </div>
-        
-    
-
-     ";
+if(isset($_REQUEST[ 'submit'])) 
+{ 
+    extract($_REQUEST); 
+    $result=$user->edit_room_cat($roomname, $room_qnty, $no_bed, $bedtype,$facility,$price,$room_cat);
+    if($result)
+    {
+        echo "<script type='text/javascript'>
+              alert('".$result."');
+         </script>";
     }
-} else {
-    echo "0 results";
-}
-$conn->close();
+
+   
+} 
 ?>
-    
-    
-    
-    
 
 
+<body>
+   
+<div class="container">
+        <div class="well">
+            <h2>Add Room List</h2>
+            <hr>
+            <form action="" method="post" name="room_category">
+                <div class="form-group">
+                    <label for="roomname">Room Type Name:</label>
+                    <input type="text" class="form-control" name="roomname" value="<?php echo $row['roomname'] ?>" required>
+                </div>
+                 <div class="form-group">
+                    <label for="qty">Status:</label>&nbsp;
+                    <select name="status">
+                    <option value="<?php echo $row['status'] ?>"><?php echo $row['status'] ?></option>
+                      <option value="1">AVAILABLE</option>
+                      <option value="2">BOOKED</option>
+                      <option value="3">NOT AVAILABLE</option>
+                
+                    </select>
+                </div>
+            
+              >
+                <div class="form-group">
+                    <label for="Facility">Date</label>
+                    <textarea class="form-control" name="facility"><?php echo $row['date'] ?></textarea>
+                </div>
+               <div class="form-group">
+                    <label for="price">Technician In Charge</label>
+                    <input type="text" class="form-control" name="tic" value="<?php echo $row['tic'] ?>" required>
+                </div>
+                <button type="submit" class="btn btn-lg btn-primary button" name="submit">Update</button>
+
+               <br>
+                <div id="click_here">
+                    <a href="resources_list.php">Back to Room List</a>
+                </div>
 
 
+            </form>
+        </div>
+    </div>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
 </body>
 
 </html>
