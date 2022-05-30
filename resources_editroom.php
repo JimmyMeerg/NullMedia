@@ -3,7 +3,7 @@
 	<div class="ts-main-content">
 		<?php include('includes/manager_sidebar.php');?>
         
-        <?php
+<?php
 session_start();
 ?>
 
@@ -15,7 +15,7 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>FK Booking</title>
+    <title>FK RESOURCES BOOKING SYSTEM</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -28,13 +28,14 @@ session_start();
         .well {
             background: rgba(0, 0, 0, 0.7);
             border: none;
-            height: 200px;
+            height: 750px;
         }
         
         body {
-            background-image: url('images/home_bg.jpg');
+            background-image: url('img/fk.png');
             background-repeat: no-repeat;
             background-attachment: fixed;
+             background-size: cover;
         }
         
         h4 {
@@ -75,7 +76,7 @@ session_start();
 </head>
 
 <?php
-session_start();
+
 $host="localhost";
 $dbuser="root";
 $dbpass="";
@@ -135,7 +136,7 @@ if(isset($_POST['update']))
         ?>
 
 
-            <h2>Update Room </h2>
+            <center><h2>Update Room </h2></center>
             <hr>
             <form action="" method="POST" name="room_category">
                
@@ -170,14 +171,14 @@ if(isset($_POST['update']))
                 <br>
                 <br>
                 <br>
-                <center> <button type="update" class="btn btn-lg btn-primary button" name="update">Update</button>
+                <center> <button type="status" class="btn btn-lg btn-primary button" name="status">Update</button>
 
                 <br>
                 
                 <br>
                 <br>
                 <div id="click_here">
-                    <a href="../admin.php">Back to Room Lists</a>
+                    <a href="resources_list.php">Back to Room Lists</a>
                 </div> </center>
 
 

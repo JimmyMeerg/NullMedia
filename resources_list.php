@@ -12,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>FK Booking</title>
+    <title>FK RESOURCES BOOKING SYSTEM</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -26,12 +26,14 @@
             background: rgba(0, 0, 0, 0.7);
             border: none;
             height: 200px;
+            
         }
         
         body {
-            background-image: url('images/home_bg.jpg');
+            background-image: url('img/fk.png');
             background-repeat: no-repeat;
             background-attachment: fixed;
+             background-size: cover;
         }
         
         h4 {
@@ -115,7 +117,7 @@ if ($result->num_rows > 0) {
             <h4>".$row['roomname']."</h4><hr>
             <h6>Status: ".$row['status']."</h6>
             <h6>Location: ".$row['location']."</h6>
-            <h6>Date: ".$row['date']."</h6>
+           
             <h6>Technician in Charger: ".$row['tic']."</h6>
         </div>
         &nbsp;&nbsp;
