@@ -8,7 +8,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<meta name="theme-color" content="#3e454c">
-	<title>Student Hostel Registration</title>
+	<title>FK RESOURCES BOOKING SYSTEM</title>
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/dataTables.bootstrap.min.css">>
@@ -17,21 +17,21 @@
 	<link rel="stylesheet" href="css/fileinput.min.css">
 	<link rel="stylesheet" href="css/awesome-bootstrap-checkbox.css">
 	<link rel="stylesheet" href="css/style.css">
-<script type="text/javascript" src="js/jquery-1.11.3-jquery.min.js"></script>
-<script type="text/javascript" src="js/validation.min.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-<script type="text/javascript">
-function valid()
-{
-if(document.registration.password.value!= document.registration.cpassword.value)
-{
-alert("Password and Re-Type Password Field do not match  !!");
-document.registration.cpassword.focus();
-return false;
-}
-return true;
-}
-</script>
+	<script type="text/javascript" src="js/jquery-1.11.3-jquery.min.js"></script>
+	<script type="text/javascript" src="js/validation.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+	<script type="text/javascript">
+	function valid()
+	{
+	if(document.registration.password.value!= document.registration.cpassword.value)
+	{
+	alert("Password and Re-Type Password Field do not match  !!");
+	document.registration.cpassword.focus();
+	return false;
+	}
+	return true;
+	}
+	</script>
 </head>
 <body>
 	<?php include('includes/header.php');?>
@@ -70,7 +70,7 @@ return true;
 									<input type="text" placeholder="The Description of the Complaint" name="complaintDes" class="form-control mb">
 									
 
-									<input type="submit" name="Submit" class="btn btn-primary btn-block" value="Submit" >
+									<input type="submit" name="Update" class="btn btn-primary btn-block" value="Update" >
 								</form>
 							</div>
 						</div>						

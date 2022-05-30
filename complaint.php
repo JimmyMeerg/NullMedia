@@ -1,3 +1,18 @@
+<?php
+session_start();
+include('includes/config.php');
+if(isset($_POST['submit']))
+{
+$username=$_POST['username'];
+$complaintType=$_POST['complaintType'];
+$complaintDes=$_POST['complaintDes'];
+$query="insert into  complaint(username,complaintType,complaintDes) values(?,?,?)";
+$stmt = $mysqli->prepare($query);
+$rc=$stmt->bind_param('sss',$username,$complaintType,$complaintDes);
+$stmt->execute();
+echo"<script>alert('Complaint Succssfully');</script>";
+}
+?>
 
 <!doctype html>
 <html lang="en" class="no-js">
@@ -8,7 +23,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<meta name="theme-color" content="#3e454c">
-	<title>Student Hostel Registration</title>
+	<title>FK RESOURCES BOOKING SYSTEM</title>
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/dataTables.bootstrap.min.css">>
@@ -17,21 +32,10 @@
 	<link rel="stylesheet" href="css/fileinput.min.css">
 	<link rel="stylesheet" href="css/awesome-bootstrap-checkbox.css">
 	<link rel="stylesheet" href="css/style.css">
-<script type="text/javascript" src="js/jquery-1.11.3-jquery.min.js"></script>
-<script type="text/javascript" src="js/validation.min.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-<script type="text/javascript">
-function valid()
-{
-if(document.registration.password.value!= document.registration.cpassword.value)
-{
-alert("Password and Re-Type Password Field do not match  !!");
-document.registration.cpassword.focus();
-return false;
-}
-return true;
-}
-</script>
+	<script type="text/javascript" src="js/jquery-1.11.3-jquery.min.js"></script>
+	<script type="text/javascript" src="js/validation.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+
 </head>
 <body>
 	<?php include('includes/header.php');?>
@@ -46,41 +50,55 @@ return true;
 						<h2 class="page-title"> Submit A Complaint </h2>
 
 						<div class="row">
-					    <div class="col-md-6 col-md-offset-3">
-						<div class="well row pt-2x pb-3x bk-light">
-							<div class="col-md-8 col-md-offset-2">
-							
-								<form action="" class="mt" method="post">
-									<label for="" class="text-uppercase text-sm">Username: </label>
-									<input type="text" placeholder="Username" name="username" class="form-control mb">
-									<label for="" class="text-uppercase text-sm">Date: </label>
-									<input type="password" placeholder="Date" name="date" class="form-control mb">
-									<label for="" class="text-uppercase text-sm">Time: </label>
-									<input type="text" placeholder="Time" name="time" class="form-control mb">
-									<label for="" class="text-uppercase text-sm">Complaint Type: </label> 
-										<br>
-										<select name="complaintType" id="complaintType">
-											<option value="damaged">Damaged Equipment</option>
-											<option value="inproper">Improper Setup</option>
-										</select> 
-										<br>
-									<label for="" class="text-uppercase text-sm">The Description of the Complaint: </label>
-									<input type="text" placeholder="The Description of the Complaint" name="complaintDes" class="form-control mb">
-									
+							<div class="col-md-12">
+								<div class="panel panel-primary">
+									<div class="panel-heading">Complaint Form</div>
+									<div class="panel-body">
 
-									<input type="submit" name="Submit" class="btn btn-primary btn-block" value="Submit" >
-								</form>
+									<form method="post" action="" name="complaint" class="form-horizontal" onSubmit="return valid();">		
+																
+										<div class="form-group">
+										<label class="col-sm-2 control-label"> Username : </label>
+										<div class="col-sm-8">
+										<input type="text" name="username" id="username"  class="form-control" required="required" >
+										</div>
+										</div>
+
+										<div class="form-group">
+										<label class="col-sm-2 control-label"> Complaint Type : </label>
+										<div class="col-sm-8">
+										<select name="complaintType" class="form-control" required="required">
+										<option value="">Select Complaint Type</option>
+										<option value="Damaged Equipment">Damaged Equipment</option>
+										<option value="Improper Setup">Improper Setup</option>
+										</select>
+										</div>
+										</div>
+
+										<div class="form-group">
+										<label class="col-sm-2 control-label"> The Description of the Complaint: : </label>
+										<div class="col-sm-8">
+										<input type="text" name="complaintDes" id="complaintDes"  class="form-control">
+										</div>
+										</div>
+
+										<div class="col-sm-6 col-sm-offset-4">
+										<button class="btn btn-default" type="submit">Cancel</button>
+										<input type="submit" name="submit" Value="Submit" class="btn btn-primary">
+										</div>
+										
+									</form>
+
+									</div>
+									</div>
+								</div>
 							</div>
-						</div>						
 						</div>
+							</div>
 						</div>
-						</div>
-					
 					</div>
-				</div>
+				</div> 	
 			</div>
-		</div> 	
-		</div>
 		</div>
 	</div>
 	<script src="js/jquery.min.js"></script>
