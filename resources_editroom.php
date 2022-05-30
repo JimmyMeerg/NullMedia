@@ -140,8 +140,8 @@ if(isset($_REQUEST[ 'submit']))
             
               >
                 <div class="form-group">
-                    <label for="Facility">Date</label>
-                    <textarea class="form-control" name="facility"><?php echo $row['date'] ?></textarea>
+                    <label for="Date">Date</label>
+                    <input type="text" class="form-control" name="date" value="<?php echo $row['date'] ?>" required>
                 </div>
                <div class="form-group">
                     <label for="price">Technician In Charge</label>
