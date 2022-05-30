@@ -111,6 +111,7 @@ if ($result->num_rows > 0) {
         <div class='row'>
         <div class='col-md-2'></div>
         <div class='col-md-6 well'>
+            <h4>ID: ".$row['id']."</h4>
             <h4>".$row['roomname']."</h4><hr>
             <h6>Status: ".$row['status']."</h6>
             <h6>Location: ".$row['location']."</h6>

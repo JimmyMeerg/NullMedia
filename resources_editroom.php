@@ -1,9 +1,12 @@
 
 	<?php include('includes/manager_header.php');?>
 	<div class="ts-main-content">
-	<?php include('includes/manager_sidebar.php');?>
-      
+		<?php include('includes/manager_sidebar.php');?>
         
+        <?php
+session_start();
+?>
+
  <!DOCTYPE html>
 <html lang="en">
 
@@ -66,91 +69,116 @@
 <script type="text/javascript" src="js/validation.min.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
-function valid()
-{
-if(document.registration.password.value!= document.registration.cpassword.value)
-{
-alert("Password and Re-Type Password Field do not match  !!");
-document.registration.cpassword.focus();
-return false;
-}
-return true;
-}
+
 </script>
     
 </head>
 
-
 <?php
+session_start();
 $host="localhost";
 $dbuser="root";
 $dbpass="";
 $db="fkreserv";
 $mysqli =new mysqli($host,$dbuser, $dbpass, $db);
+$con = new mysqli($host,$dbuser, $dbpass, $db);
 
 
-// Create connection
-$conn = new mysqli($host,$dbuser, $dbpass, $db);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
+if(isset($_POST['update']))
+{
+    $id = $_POST['id'];
+    $roomname = $_POST['roomname'];
+    $status = $_POST['status'];
+    $location = $_POST['location'];
+    $tic = $_POST['tic'];
 
-$sql = "SELECT * FROM room_category";
-$result = $conn->query($sql);
-if(isset($_REQUEST[ 'submit'])) 
-{ while($row = $result->fetch_assoc()){
-    extract($_REQUEST); 
-    $result=$user->edit_room_cat($roomname, $room_qnty, $no_bed, $bedtype,$facility,$price,$room_cat);
-    if($result)
+
+    $query = "UPDATE room_category SET id='$id', roomname='$roomname', status='$status', location='$location',tic='$tic'";
+    
+
+
+    if($query)
     {
-        echo "<script type='text/javascript'>
-              alert('".$result."');
-         </script>";
+        $_SESSION['status'] = "Room Updated Successfully";
+        header("Location: resources_editroom.php");
+
+    }
+    else
+    {
+
+        $_SESSION['status'] = "Not Updated";
+        header("Location: resources_editroom.php");
     }
 
-   
-} }
+
+
+}
+
+
 ?>
 
 
 <body>
-   
-<div class="container">
+    <div class="container">
         <div class="well">
-            <h2>Add Room List</h2>
+
+        <?php
+        if(isset($_SESSION['status']))
+        {
+            echo "<h4>".$_SESSION['status']."<h4>";
+            unset($_SESSION['status']);
+
+
+        }
+        
+        
+        ?>
+
+
+            <h2>Update Room </h2>
             <hr>
-            <form action="" method="post" name="room_category">
+            <form action="" method="POST" name="room_category">
+               
                 <div class="form-group">
-                    <label for="roomname">Room Type Name:</label>
-                    <input type="text" class="form-control" name="roomname" value="<?php echo $row['rboomname'] ?>" required>
+                    <label for="roomname">ID:</label>
+                    <input type="text" class="form-control" name="id" required>
+                </div>
+                <div class="form-group">
+                    <label for="roomname">Room  Name:</label>
+                    <input type="text" class="form-control" name="roomname"  required>
                 </div>
                  <div class="form-group">
                     <label for="qty">Status:</label>&nbsp;
                     <select name="status">
-                    <option value="<?php echo $row['status'] ?>"><?php echo $row['status'] ?></option>
-                      <option value="1">AVAILABLE</option>
-                      <option value="2">BOOKED</option>
+                    <option value="" ></option>
+                      <option value="AVAILABLE">AVAILABLE</option>
+                      <option value="BOOKED">BOOKED</option>
                       <option value="3">NOT AVAILABLE</option>
-                
+                      
                     </select>
                 </div>
-            
-              >
                 <div class="form-group">
-                    <label for="Date">Date</label>
-                    <input type="text" class="form-control" name="date" value="<?php echo $row['date'] ?>" required>
+                    <label for="roomname">Location:</label>
+                    <input type="text" class="form-control" name="location"  required>
                 </div>
-               <div class="form-group">
-                    <label for="price">Technician In Charge</label>
-                    <input type="text" class="form-control" name="tic" value="<?php echo $row['tic'] ?>" required>
+                <div class="form-group">
+                    <label for="roomname">Technician:</label>
+                    <input type="text" class="form-control" name="tic"  required>
                 </div>
-                <button type="submit" class="btn btn-lg btn-primary button" name="submit">Update</button>
 
-               <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <center> <button type="update" class="btn btn-lg btn-primary button" name="update">Update</button>
+
+                <br>
+                
+                <br>
+                <br>
                 <div id="click_here">
-                    <a href="resources_list.php">Back to Room List</a>
-                </div>
+                    <a href="../admin.php">Back to Room Lists</a>
+                </div> </center>
 
 
             </form>
