@@ -1,9 +1,10 @@
 
 <?php if($_SESSION['id'])
 { ?><div class="brand clearfix">
-        <!-- Logo -->
-        <div id="logo">
-            <img src="logo.png" />
+
+           <!-- Logo -->
+        <div id="logo" style="padding: 5px 20px;">
+            <img src="logofkreser.png" />
         </div>
         <span class="menu-btn"><i class="fa fa-bars"></i></span>
         <ul class="ts-profile-nav">
@@ -23,7 +24,7 @@
 
 
      <!-- Logo -->
-        <div id="logo" style="padding: 5px 20px;;">
+        <div id="logo" style="padding: 5px 20px;">
             <img src="logofkreser.png" />
         </div>
         <span class="menu-btn"><i class="fa fa-bars"></i></span>

@@ -17,7 +17,7 @@
 
 
         <li><a href="index.php"><i class="fa fa-users"></i> User Login</a></li>
-        <li><a href="index.php"><i class="fa fa-users"></i> Technician Login</a></li>
+        <li><a href="technician"><i class="fa fa-users"></i> Technician Login</a></li>
         <li><a href="admin"><i class="fa fa-user"></i> Manager Login</a></li>
         <?php } ?>
 
