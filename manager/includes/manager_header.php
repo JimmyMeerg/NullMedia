@@ -1,32 +1,8 @@
-
-<?php if($_SESSION['id'])
-{ ?><div class="brand clearfix">
-        <!-- Logo -->
-        <div id="logo">
-            <img src="logo.png" />
-        </div>
-        <span class="menu-btn"><i class="fa fa-bars"></i></span>
-        <ul class="ts-profile-nav">
-            <li class="ts-account">
-                <a href="#"><img src="img/ts-avatar.jpg" class="ts-avatar hidden-side" alt=""> Account <i class="fa fa-angle-down hidden-side"></i></a>
-                <ul>
-                    <li><a href="my-profile.php">My Account</a></li>
-                    <li><a href="logout.php">Logout</a></li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-
-<?php
-} else { ?>
 <div class="brand clearfix">
-
-
-     <!-- Logo -->
-        <div id="logo" style="padding: 5px 20px;;">
-            <img src="logofkreser.png" />
+           <!-- Logo -->
+        <div id="logo" style="padding: 4px 15px;;">
+            <img src="img/logofkreser.png" />
         </div>
-        <span class="menu-btn"><i class="fa fa-bars"></i></span>
+
 
     </div>
-    <?php } ?>
