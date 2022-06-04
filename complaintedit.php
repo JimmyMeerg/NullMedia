@@ -1,3 +1,26 @@
+<?php
+  include("connection.php");
+  error_reporting(0);
+  $id=$_GET["ID"];
+  if($_GET['submit'])
+  {
+    $id=$_GET["ID"];
+    $fname=$_GET["username"];
+    $lname=$_GET["date"];
+    $gender=$_GET["complaintType"];
+    $email=$_GET["complaintDes"];
+    $query = "UPDATE `complaint` SET username='$username', date='$date', Gender='$complaintType', complaintDes='$complaintDes' ";
+    $data = mysqli_query($conn, $query);
+    
+    if($data)
+    {
+      header("Location: complaint.php");
+    } else {
+      echo "Failed to Updated Record";
+    }
+  }
+?>
+
 <!doctype html>
 <html lang="en" class="no-js">
 <head>
