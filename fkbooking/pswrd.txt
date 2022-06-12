@@ -1,0 +1,15 @@
+Admin
+:khairul16
+:khai123456
+
+Manager
+:SyazaEyka
+:syaza123
+
+Technician
+:jimmy / faris24
+:jim123 / faris123
+
+User
+:xuan@gmail.com
+:xuan123
